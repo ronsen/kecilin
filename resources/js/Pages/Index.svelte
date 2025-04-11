@@ -42,7 +42,11 @@
 
 		{#if $form.progress}
 			<div class="mt-1">
-				<progress value={$form.progress.percentage} max="100">
+				<progress
+					value={$form.progress.percentage}
+					max="100"
+					class="w-full rounded-full"
+				>
 					{$form.progress.percentage}%
 				</progress>
 			</div>
