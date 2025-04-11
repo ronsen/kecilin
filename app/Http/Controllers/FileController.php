@@ -17,7 +17,7 @@ class FileController extends Controller
 			'file' => ['image', 'max:20480'],
 		]);
 
-		$file = Storage::put('', $request->file);
+		$file = Storage::put(date('Ymd'), $request->file);
 		$path = Storage::path($file);
 		$url = Storage::url($file);
 
