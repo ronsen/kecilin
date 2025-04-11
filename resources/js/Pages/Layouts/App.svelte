@@ -15,21 +15,7 @@
 			<Link href="/">{$page.props.appName}</Link>
 		</h1>
 
-		<div class="inline-flex gap-3">
-			<Theme />
-
-			{#if $page.props.auth.user}
-				<Link href="/posts/create"><CirclePlus size={16} /></Link>
-				<button
-					use:inertia={{ href: "/logout", method: "post" }}
-					class="cursor-pointer"><LogOut size={16} /></button
-				>
-			{/if}
-
-			{#if !$page.props.auth.user}
-				<Link href="/login"><LogIn size={16} /></Link>
-			{/if}
-		</div>
+		<Theme />
 	</nav>
 
 	{#if $page.props.flash.message}

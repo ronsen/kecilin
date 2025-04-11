@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
@@ -34,10 +35,10 @@ class FileController extends Controller
 		]);
 	}
 
-	public function delete(Request $request): Response
+	public function delete(Request $request): RedirectResponse
 	{
 		Storage::delete($request->input('file'));
 
-		return Inertia::render('Delete');
+		return redirect('/')->with('message', 'File was successfully deleted from server.');
 	}
 }
