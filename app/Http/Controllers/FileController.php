@@ -28,8 +28,16 @@ class FileController extends Controller
 		$image->save($path);
 
 		return Inertia::render('Upload', [
+			'file' => $file,
 			'url' => $url,
 			'image' => $image,
 		]);
+	}
+
+	public function delete(Request $request): Response
+	{
+		Storage::delete($request->input('file'));
+
+		return Inertia::render('Delete');
 	}
 }

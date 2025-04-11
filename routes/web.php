@@ -17,3 +17,5 @@ Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('h
 
 Route::post('/kecilin', [\App\Http\Controllers\FileController::class, 'store'])
 	->name('files.store');
+Route::get('/delete', [\App\Http\Controllers\FileController::class, 'delete'])
+	->name('files.delete');

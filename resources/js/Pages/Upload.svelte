@@ -3,9 +3,9 @@
 </script>
 
 <script>
-	import { page } from "@inertiajs/svelte";
+	import { page, Link } from "@inertiajs/svelte";
 
-	let { url } = $props();
+	let { file, url } = $props();
 </script>
 
 <svelte:head>
@@ -16,7 +16,7 @@
 	<img src={url} alt="[]" class="w-full" />
 </div>
 
-<div class="flex justify-center">
+<div class="flex justify-center mb-4">
 	<a
 		href={url}
 		class="bg-blue-500 hover:bg-blue-600 text-white w-full px-3 py-2 rounded-full text-center"
@@ -24,3 +24,10 @@
 	>
 </div>
 
+<div class="flex justify-center">
+	<Link
+		href="/delete?file={file}"
+		class="bg-red-500 hover:bg-red-600 text-white w-full px-3 py-2 rounded-full text-center"
+		>Delete file from server</Link
+	>
+</div>
