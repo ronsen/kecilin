@@ -4,15 +4,23 @@
 
 <script>
 	import { page } from "@inertiajs/svelte";
-	
-	let { url } = $props();
 
-	console.log(url);
-	
+	let { url } = $props();
 </script>
 
 <svelte:head>
 	<title>{$page.props.appName}</title>
 </svelte:head>
 
-<img src={url} alt="Image" class="w-full"> 
+<div class="mb-4">
+	<img src={url} alt="[]" class="w-full" />
+</div>
+
+<div class="flex justify-center">
+	<a
+		href={url}
+		class="bg-blue-500 hover:bg-blue-600 text-white w-full px-3 py-2 rounded-full text-center"
+		download>Download</a
+	>
+</div>
+
