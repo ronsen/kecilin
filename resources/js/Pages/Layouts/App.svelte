@@ -1,6 +1,6 @@
 <script>
 	import { page, Link, inertia } from "@inertiajs/svelte";
-	import { CirclePlus, LogIn, LogOut } from "lucide-svelte";
+	import { Code } from "lucide-svelte";
 	import Alert from "../Components/Alert.svelte";
 	import Theme from "../Components/Theme.svelte";
 
@@ -24,7 +24,14 @@
 
 	{@render children()}
 
-	<div class="mt-6 border-t dark:border-zinc-700 text-center text-xs py-2">
-		<a href="https://dub.sh/ronsen" target="_blank">Dibuat oleh Ronsen</a>
+	<div class="mt-6 border-t dark:border-zinc-700 text-xs py-2">
+		<div class="flex justify-between items-center gap-3">
+			<a href="https://dub.sh/ronsen" target="_blank"
+				>Dibuat oleh Ronsen</a
+			>
+			<a href="https://github.com/ronsen/kecilin" target="_blank"
+				><Code size={14} /></a
+			>
+		</div>
 	</div>
 </main>
