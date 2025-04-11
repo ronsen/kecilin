@@ -37,4 +37,8 @@
 	{/if}
 
 	{@render children()}
+
+	<div class="mt-6 border-t dark:border-zinc-700 text-center text-xs py-2">
+		<a href="https://dub.sh/ronsen" target="_blank">Dibuat oleh Ronsen</a>
+	</div>
 </main>

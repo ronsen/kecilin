@@ -15,5 +15,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::post('/upload', [\App\Http\Controllers\FileController::class, 'store'])
+Route::post('/kecilin', [\App\Http\Controllers\FileController::class, 'store'])
 	->name('files.store');

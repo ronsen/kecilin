@@ -20,7 +20,7 @@
 
 	function submit(e) {
 		e.preventDefault();
-		$form.post("/upload");
+		$form.post("/kecilin");
 	}
 </script>
 
