@@ -36,7 +36,7 @@
 			type="file"
 			oninput={(e) => ($form.file = e.target.files[0])}
 			onchange={(e) => show(e)}
-			class="w-full"
+			class="w-full border px-3 py-2 rounded-lg"
 		/>
 		<p class="text-xs mt-1">Max size: 20 MB</p>
 
