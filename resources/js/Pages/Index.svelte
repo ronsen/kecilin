@@ -82,7 +82,7 @@
 		<button
 			type="submit"
 			class="bg-blue-500 hover:bg-blue-600 text-white w-full px-3 py-2 rounded-full"
-			>Kecilin</button
+			disabled={$form.processing}>Kecilin</button
 		>
 	</div>
 </form>
