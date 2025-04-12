@@ -40,6 +40,12 @@
 		/>
 		<p class="text-xs mt-1">Max size: 20 MB</p>
 
+		{#if $form.errors.file}
+			<div class="text-red-500 text-sm mt-1">
+				{$form.errors.file}
+			</div>
+		{/if}
+
 		{#if $form.progress}
 			<div class="mt-1">
 				<progress
