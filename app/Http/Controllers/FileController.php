@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Inertia\Response;
-use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\Drivers\Imagick\Driver;
 use Intervention\Image\ImageManager;
 
 class FileController extends Controller
@@ -27,11 +27,16 @@ class FileController extends Controller
 		$image->scaleDown($image->width() * (int) $request->input('scale') / 100);
 		$image->toJpeg((int) $request->input('quality'));
 		$image->save($path);
+		$image = $manager->read($path); // reread
 
 		return Inertia::render('Upload', [
 			'file' => $file,
 			'url' => $url,
-			'image' => $image,
+			'fileName' => $image->exif('FILE.FileName'),
+			'fileSize' => $image->exif('FILE.FileSize'),
+			'mimeType' => $image->exif('FILE.MimeType'),
+			'height' => $image->exif('COMPUTED.Height'),
+			'width' => $image->exif('COMPUTED.Width'),
 		]);
 	}
 

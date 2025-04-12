@@ -6,7 +6,7 @@
 	import { page, Link } from "@inertiajs/svelte";
 	import { Download } from "lucide-svelte";
 
-	let { file, url } = $props();
+	let { file, url, fileName, fileSize, mimeType, height, width } = $props();
 </script>
 
 <svelte:head>
@@ -15,6 +15,31 @@
 
 <div class="mb-4">
 	<img src={url} alt="[]" class="w-full" />
+
+	<table class="w-full mt-4">
+		<tbody>
+			<tr class="border-b">
+				<td class="py-2">File Name:</td>
+				<td class="py-2 font-bold">{fileName}</td>
+			</tr>
+			<tr class="border-b">
+				<td class="py-2">File Size:</td>
+				<td class="py-2 font-bold">{fileSize} bytes</td>
+			</tr>
+			<tr class="border-b">
+				<td class="py-2">Mime Type:</td>
+				<td class="py-2 font-bold">{mimeType}</td>
+			</tr>
+			<tr class="border-b">
+				<td class="py-2">Height:</td>
+				<td class="py-2 font-bold">{height} px</td>
+			</tr>
+			<tr class="border-b">
+				<td class="py-2">Width:</td>
+				<td class="py-2 font-bold">{width} px</td>
+			</tr>
+		</tbody>
+	</table>
 </div>
 
 <div class="flex justify-center mb-4">
