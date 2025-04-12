@@ -23,6 +23,7 @@ class FileController extends Controller
 		]);
 
 		$quality = (int) $request->input('quality');
+		$scale = (int) $request->input('scale') / 100;
 
 		$file = Storage::put(date('Ymd'), $request->file);
 		$path = Storage::path($file);
@@ -32,8 +33,8 @@ class FileController extends Controller
 		$manager = new ImageManager(new Driver());
 		$image = $manager->read($path);
 		$image->scaleDown(
-			width: $image->width() * (int) $request->input('scale') / 100,
-			height: $image->height() * (int) $request->input('scale') / 100,
+			width: $image->width() * $scale,
+			height: $image->height() * $scale,
 		);
 		
 		$encoder = match ($extension) {
