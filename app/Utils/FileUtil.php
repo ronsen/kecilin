@@ -40,9 +40,9 @@ class FileUtil
 		return [
 			'file' => $file,
 			'url' => $url,
-			'fileName' => $image->exif('FILE.FileName'),
-			'fileSize' => $image->exif('FILE.FileSize'),
-			'mimeType' => $image->exif('FILE.MimeType'),
+			'file_name' => $image->exif('FILE.FileName'),
+			'file_size' => $image->exif('FILE.FileSize'),
+			'mime_type' => $image->exif('FILE.MimeType'),
 			'height' => $image->exif('COMPUTED.Height'),
 			'width' => $image->exif('COMPUTED.Width'),
 		];

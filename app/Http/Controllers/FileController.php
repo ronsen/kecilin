@@ -24,9 +24,9 @@ class FileController extends Controller
 		return Inertia::render('Upload', [
 			'file' => $result['file'],
 			'url' => $result['url'],
-			'fileName' => $result['fileName'],
-			'fileSize' => $result['fileSize'],
-			'mimeType' => $result['mimeType'],
+			'fileName' => $result['file_name'],
+			'fileSize' => $result['file_size'],
+			'mimeType' => $result['mime_type'],
 			'height' => $result['height'],
 			'width' => $result['width'],
 		]);
