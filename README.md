@@ -6,9 +6,11 @@ Ngecilin gambar-gambar yang besar.
 #### Using curl
 
 ```
-curl -F "file=@/path/to/image.jpg" \
+curl -X POST \
+	-F "file=@/path/to/image.jpg" \
 	-F "scale=100" \
-	-F "quality=76" https://kecilin.sintaks.web.id/api/upload
+	-F "quality=76" \
+	https://kecilin.sintaks.web.id/api/upload
 ```
 
 Sample result:
