@@ -48,8 +48,8 @@ class FileUtil
 		];
 	}
 
-	public static function delete(string $file): void
+	public static function delete(string $file): bool
 	{
-		Storage::delete($file);
+		return Storage::delete($file);
 	}
 }

@@ -34,8 +34,10 @@ class FileController extends Controller
 
 	public function delete(Request $request): RedirectResponse
 	{
-		FileUtil::delete($request->input('file'));
-
-		return redirect('/')->with('message', 'File was successfully deleted from server.');
+		if (FileUtil::delete($request->input('file'))) {
+			return redirect('/')->with('message', 'File was successfully deleted from server.');
+		} else {
+			return redirect('/')->with('message', 'Something went wrong');
+		}
 	}
 }
