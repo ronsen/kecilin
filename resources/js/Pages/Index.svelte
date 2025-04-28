@@ -3,8 +3,7 @@
 </script>
 
 <script>
-	import { page } from "@inertiajs/svelte";
-	import { useForm } from "@inertiajs/svelte";
+	import { page, useForm } from "@inertiajs/svelte";
 
 	const form = useForm({
 		file: null,
