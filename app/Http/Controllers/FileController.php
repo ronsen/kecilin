@@ -13,7 +13,7 @@ class FileController extends Controller
 	public function store(Request $request): Response
 	{
 		$request->validate([
-			'file' => ['required', 'image', 'max:20480'],
+			'file' => ['required', 'image', 'max:102400'],
 		]);
 
 		$scale = (int) $request->input('scale') / 100;
