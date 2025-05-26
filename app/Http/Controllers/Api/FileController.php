@@ -12,7 +12,7 @@ class FileController extends Controller
 	public function store(Request $request): JsonResponse
 	{
 		$request->validate([
-			'file' => ['required', 'image', 'max:20480'],
+			'file' => ['required', 'image', 'max:102400'],
 		]);
 
 		$scale = $request->input('scale') ? $request->input('scale') / 100 : 1;
