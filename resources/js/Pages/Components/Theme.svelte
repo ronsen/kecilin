@@ -14,7 +14,7 @@
 	function toggleMode() {
 		if (document.documentElement.classList.contains("dark")) {
 			document.documentElement.classList.remove("dark");
-			localStorage.removeItem("theme");
+			localStorage.theme = "light";
 		} else {
 			document.documentElement.classList.add("dark");
 			localStorage.theme = "dark";

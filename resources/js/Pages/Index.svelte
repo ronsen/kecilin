@@ -64,7 +64,7 @@
 				bind:value={$form.scale}
 				min="0"
 				max="100"
-				class="form-input rounded-lg dark:text-white text-black bg-white dark:bg-black"
+				class="input"
 			/>
 			<p class="text-xs mt-1">Scale (%)</p>
 		</div>
@@ -74,14 +74,12 @@
 				bind:value={$form.quality}
 				min="0"
 				max="100"
-				class="form-input rounded-lg dark:text-white text-black bg-white dark:bg-black"
+				class="input"
 			/>
 			<p class="text-xs mt-1">Quality (%)</p>
 		</div>
-		<button
-			type="submit"
-			class="bg-blue-500 hover:bg-blue-600 text-white w-full px-3 py-2 rounded-full"
-			disabled={$form.processing}>Kecilin</button
+		<button type="submit" class="btn btn-primary" disabled={$form.processing}
+			>Kecilin</button
 		>
 	</div>
 </form>

@@ -5,6 +5,16 @@
 
 	let show = $state(true);
 
+	$effect(() => {
+		const interval = setTimeout(() => {
+			show = !show;
+		}, 3000);
+
+		return () => {
+			clearInterval(interval);
+		};
+	})
+
 	function close(e) {
 		e.preventDefault();
 		show = !show;

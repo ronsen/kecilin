@@ -58,7 +58,7 @@
 <div class="flex justify-center mb-4">
 	<a
 		href={url}
-		class="bg-blue-500 hover:bg-blue-600 text-white w-full px-3 py-2 rounded-full flex justify-center items-center"
+		class="btn btn-primary flex justify-center items-center"
 		download><Download size={16} /><span class="ml-1">Download</span></a
 	>
 </div>
@@ -66,13 +66,13 @@
 <div class="flex justify-center">
 	<button
 		onclick={() => dialog.show()}
-		class="bg-red-500 hover:bg-red-600 text-white w-full px-3 py-2 rounded-full cursor-pointer"
+		class="btn btn-danger"
 		>Delete file from server</button
 	>
 
 	<dialog
 		bind:this={dialog}
-		class="fixed top-0 left-0 translate-y-1/2 w-1/4 m-auto rounded-lg bg-zinc-50 text-black/90 antialiased dark:bg-zinc-900 dark:text-white/90 p-6 border"
+		class="fixed top-0 left-0 translate-y-1/2 w-1/3 m-auto rounded-lg bg-zinc-50 text-black/90 antialiased dark:bg-zinc-900 dark:text-white/90 p-6 border"
 	>
 		<form onsubmit={submit}>
 			<p>Are you sure want to delete this file?</p>
@@ -80,12 +80,12 @@
 				<button
 					type="button"
 					onclick={() => dialog.close()}
-					class="bg-blue-500 hover:bg-blue-600 text-white w-full px-3 py-2 rounded-full"
+					class="btn btn-primary"
 					>No</button
 				>
 				<button
 					type="submit"
-					class="bg-red-500 hover:bg-red-600 text-white w-full px-3 py-2 rounded-full cursor-pointer"
+					class="btn btn-danger"
 					>Yes</button
 				>
 			</div>

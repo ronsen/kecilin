@@ -13,3 +13,19 @@
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+.btn {
+	@apply w-full px-3 py-2 rounded-full;
+}
+
+.btn-primary {
+	@apply bg-blue-500 hover:bg-blue-600 text-white;
+}
+
+.btn-danger {
+	@apply bg-red-500 hover:bg-red-600 text-white;
+}
+
+.input {
+	@apply form-input rounded-lg dark:text-white text-black bg-white dark:bg-black;
+}
