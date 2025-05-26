@@ -7,7 +7,7 @@
 
 	const form = useForm({
 		file: null,
-		scale: 100,
+		scale: 80,
 		quality: 76,
 	});
 
@@ -37,7 +37,7 @@
 			onchange={(e) => show(e)}
 			class="w-full border px-3 py-2 rounded-lg"
 		/>
-		<p class="text-xs mt-1">Max size: 20 MB</p>
+		<p class="text-xs mt-1">Max size: 100 MB</p>
 
 		{#if $form.errors.file}
 			<div class="text-red-500 text-sm mt-1">

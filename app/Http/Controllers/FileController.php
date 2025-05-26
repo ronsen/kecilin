@@ -16,8 +16,8 @@ class FileController extends Controller
 			'file' => ['required', 'image', 'max:102400'],
 		]);
 
-		$scale = (int) $request->input('scale') / 100;
-		$quality = (int) $request->input('quality');
+		$scale = $request->input('scale') / 100;
+		$quality = $request->input('quality') / 100;
 
 		$result = FileUtil::upload($request->file, $scale, $quality);
 

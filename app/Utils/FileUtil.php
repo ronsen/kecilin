@@ -13,7 +13,7 @@ use Intervention\Image\ImageManager;
 
 class FileUtil
 {
-	public static function upload(UploadedFile $uploadedFile, int $scale, int $quality): array
+	public static function upload(UploadedFile $uploadedFile, float $scale, float $quality): array
 	{
 		$file = Storage::put(date('Ymd'), $uploadedFile);
 		$path = Storage::path($file);
