@@ -1,0 +1,12 @@
+services:
+  kecilin:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: kecilin
+    ports:
+      - "49164:8000"
+    volumes:
+      - ./data/storage:/var/www/html/storage/app/public
+      - ./data/database.sqlite:/var/www/html/database/database.sqlite
+    restart: unless-stopped
