@@ -15,10 +15,6 @@ RUN apt update && apt upgrade -y && \
 
 RUN curl -sLS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
 
-RUN curl -fsSL https://deb.nodesource.com/setup_23.x -o nodesource_setup.sh && \
-	bash nodesource_setup.sh && \
-	apt install -y nodejs
-
 RUN ln -s /usr/local/bin/frankenphp /usr/local/bin/frankenphp
 
 COPY . .
@@ -30,8 +26,6 @@ RUN chown www-data:www-data -R storage && \
 	chown www-data:www-data database/database.sqlite
 
 RUN php artisan storage:link
-
-RUN npm install && npm run build
 
 EXPOSE 8000
 
