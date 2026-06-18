@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:image/image.dart' as img;
+import 'package:kecilin/about.dart';
+import 'package:kecilin/constants.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class Home extends StatefulWidget {
@@ -19,10 +21,6 @@ class _HomeState extends State<Home> {
   bool _isProcessing = false;
   double _progress = 0.0;
   String _status = '';
-
-  static const extensions = {'.jpg', '.jpeg', '.png'};
-  static const width = 2048;
-  static const quality = 76;
 
   Future<void> _pickDirectory() async {
     String? result = await FilePicker.getDirectoryPath();
@@ -55,7 +53,7 @@ class _HomeState extends State<Home> {
         final files = await directory.list().toList();
         final images = files.where((file) {
           final path = file.path.toLowerCase();
-          return extensions.any(path.endsWith);
+          return Constants.extensions.any(path.endsWith);
         }).toList();
 
         for (int i = 0; i < images.length; i++) {
@@ -64,13 +62,13 @@ class _HomeState extends State<Home> {
           final image = img.decodeImage(bytes);
 
           if (image != null) {
-            final resizedImage = img.copyResize(image, width: width);
+            final resizedImage = img.copyResize(image, width: Constants.width);
             final newFileName = file.path.split(Platform.pathSeparator).last;
             final newPath =
                 '${directory.path}${Platform.pathSeparator}$newFileName';
-            await File(
-              newPath,
-            ).writeAsBytes(img.encodeJpg(resizedImage, quality: quality));
+            await File(newPath).writeAsBytes(
+              img.encodeJpg(resizedImage, quality: Constants.quality),
+            );
           }
 
           setState(() {
@@ -116,6 +114,16 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.of(
+                context,
+              ).push(MaterialPageRoute(builder: (context) => About()));
+            },
+            icon: const Icon(Icons.question_mark_rounded),
+          ),
+        ],
       ),
       body: Center(
         child: Padding(

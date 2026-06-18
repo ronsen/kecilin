@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kecilin/constants.dart';
 import 'package:kecilin/home.dart';
 
 void main() {
@@ -12,9 +13,9 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Kecilin',
+      title: Constants.appName,
       theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepOrange)),
-      home: const Home(title: 'Kecilin'),
+      home: const Home(title: Constants.appName),
     );
   }
 }
