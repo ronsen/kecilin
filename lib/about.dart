@@ -32,6 +32,13 @@ class About extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(height: 48),
+            Link(
+              target: LinkTarget.defaultTarget,
+              uri: Uri.parse('https://github.com/ronsen/kecilin'),
+              builder: (context, followLink) =>
+                  GestureDetector(onTap: followLink, child: Icon(Icons.code)),
+            ),
           ],
         ),
       ),

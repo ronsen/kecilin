@@ -121,7 +121,7 @@ class _HomeState extends State<Home> {
                 context,
               ).push(MaterialPageRoute(builder: (context) => About()));
             },
-            icon: const Icon(Icons.question_mark_rounded),
+            icon: const Icon(Icons.question_mark),
           ),
         ],
       ),
