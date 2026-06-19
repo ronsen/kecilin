@@ -20,6 +20,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   String? _selectedDirectory;
   bool _isProcessing = false;
+  bool _isCancelled = false;
   double _progress = 0.0;
   String _status = '';
 
@@ -58,39 +59,53 @@ class _HomeState extends State<Home> {
         }).toList();
 
         for (int i = 0; i < images.length; i++) {
-          final file = images[i];
-          final bytes = await (file as File).readAsBytes();
-          final image = img.decodeImage(bytes);
+          if (_isCancelled) {
+            setState(() {
+              _status = 'Resizing cancelled.';
+            });
 
-          if (image != null) {
-            if (image.width > Constants.width) {
-              final resizedImage = img.copyResize(
-                image,
-                width: Constants.width,
-              );
-              final newFileName = file.path.split(Platform.pathSeparator).last;
-              final newPath =
-                  '${directory.path}${Platform.pathSeparator}$newFileName';
-              await File(newPath).writeAsBytes(
-                img.encodeJpg(resizedImage, quality: Constants.quality),
-              );
+            return;
+          } else {
+            final file = images[i];
+            final bytes = await (file as File).readAsBytes();
+            final image = img.decodeImage(bytes);
+
+            if (image != null) {
+              if (image.width > Constants.width) {
+                final resizedImage = img.copyResize(
+                  image,
+                  width: Constants.width,
+                );
+                final newFileName = file.path
+                    .split(Platform.pathSeparator)
+                    .last;
+                final newPath =
+                    '${directory.path}${Platform.pathSeparator}$newFileName';
+                await File(newPath).writeAsBytes(
+                  img.encodeJpg(resizedImage, quality: Constants.quality),
+                );
+              }
             }
-          }
 
-          setState(() {
-            _progress = (i + 1) / images.length;
-            _status = 'Resizing ${p.basename(file.path)} ...';
-          });
+            setState(() {
+              _progress = (i + 1) / images.length;
+              _status = 'Resizing ${p.basename(file.path)} ...';
+            });
+          }
         }
+
+        setState(() {
+          _status = 'Resizing complete!';
+          _selectedDirectory = null;
+        });
       } catch (e) {
         setState(() {
           _status = 'Error: $e';
         });
       } finally {
         setState(() {
-          _status = 'Resizing complete!';
           _isProcessing = false;
-          _selectedDirectory = null;
+          _isCancelled = false;
         });
       }
     } else {
@@ -98,6 +113,12 @@ class _HomeState extends State<Home> {
         _status = 'Storage permission denied.';
       });
     }
+  }
+
+  Future<void> _cancel() async {
+    setState(() {
+      _isCancelled = true;
+    });
   }
 
   Future<bool> _requestPermission() async {
@@ -159,8 +180,8 @@ class _HomeState extends State<Home> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _isProcessing ? null : () => _process(context),
-        child: Icon(Icons.start),
+        onPressed: _isProcessing ? () => _cancel() : () => _process(context),
+        child: _isProcessing ? Icon(Icons.stop) : Icon(Icons.start),
       ),
     );
   }
