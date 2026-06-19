@@ -12,16 +12,14 @@ void main() async {
     await windowManager.ensureInitialized();
 
     WindowOptions options = const WindowOptions(
-      minimumSize: Size(480, 720),
-      maximumSize: Size(480, 720),
-      center: true,
       title: Constants.appName,
+      center: true,
+      size: Size(480, 720),
     );
 
     windowManager.waitUntilReadyToShow(options, () async {
       await windowManager.show();
       await windowManager.focus();
-      await windowManager.setMaximizable(false);
     });
   }
 
