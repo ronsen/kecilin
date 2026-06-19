@@ -6,6 +6,7 @@ import 'package:image/image.dart' as img;
 import 'package:kecilin/about.dart';
 import 'package:kecilin/constants.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:path/path.dart' as p;
 
 class Home extends StatefulWidget {
   const Home({super.key, required this.title});
@@ -78,20 +79,18 @@ class _HomeState extends State<Home> {
 
           setState(() {
             _progress = (i + 1) / images.length;
-            _status = 'Resizing ${file.path} ...';
+            _status = 'Resizing ${p.basename(file.path)} ...';
           });
         }
-
-        setState(() {
-          _status = 'Resizing complete!';
-        });
       } catch (e) {
         setState(() {
           _status = 'Error: $e';
         });
       } finally {
         setState(() {
+          _status = 'Resizing complete!';
           _isProcessing = false;
+          _selectedDirectory = null;
         });
       }
     } else {
@@ -138,7 +137,11 @@ class _HomeState extends State<Home> {
             children: [
               ElevatedButton(
                 onPressed: _isProcessing ? null : _pickDirectory,
-                child: Text(_selectedDirectory ?? 'Choose a folder'),
+                child: Text(
+                  _selectedDirectory == null
+                      ? 'Choose a folder'
+                      : p.basename(_selectedDirectory!),
+                ),
               ),
               const SizedBox(height: 20),
               if (_isProcessing)
