@@ -62,13 +62,18 @@ class _HomeState extends State<Home> {
           final image = img.decodeImage(bytes);
 
           if (image != null) {
-            final resizedImage = img.copyResize(image, width: Constants.width);
-            final newFileName = file.path.split(Platform.pathSeparator).last;
-            final newPath =
-                '${directory.path}${Platform.pathSeparator}$newFileName';
-            await File(newPath).writeAsBytes(
-              img.encodeJpg(resizedImage, quality: Constants.quality),
-            );
+            if (image.width > Constants.width) {
+              final resizedImage = img.copyResize(
+                image,
+                width: Constants.width,
+              );
+              final newFileName = file.path.split(Platform.pathSeparator).last;
+              final newPath =
+                  '${directory.path}${Platform.pathSeparator}$newFileName';
+              await File(newPath).writeAsBytes(
+                img.encodeJpg(resizedImage, quality: Constants.quality),
+              );
+            }
           }
 
           setState(() {
