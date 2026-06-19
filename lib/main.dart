@@ -1,8 +1,30 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:window_manager/window_manager.dart';
 import 'package:kecilin/constants.dart';
 import 'package:kecilin/home.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  if (Platform.isLinux) {
+    await windowManager.ensureInitialized();
+
+    WindowOptions options = const WindowOptions(
+      minimumSize: Size(480, 720),
+      maximumSize: Size(480, 720),
+      center: true,
+      title: 'Kecilin',
+    );
+
+    windowManager.waitUntilReadyToShow(options, () async {
+      await windowManager.show();
+      await windowManager.focus();
+      await windowManager.setMaximizable(false);
+    });
+  }
+
   runApp(const App());
 }
 
