@@ -15,7 +15,7 @@ void main() async {
       minimumSize: Size(480, 720),
       maximumSize: Size(480, 720),
       center: true,
-      title: 'Kecilin',
+      title: Constants.appName,
     );
 
     windowManager.waitUntilReadyToShow(options, () async {
