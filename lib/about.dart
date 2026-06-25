@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kecilin/constants.dart';
 import 'package:url_launcher/link.dart';
 
 class About extends StatelessWidget {
@@ -17,7 +18,9 @@ class About extends StatelessWidget {
               style: TextStyle(fontSize: 18, fontWeight: .bold),
             ),
             const SizedBox(height: 12),
-            const Text('Resizing all images in a folder.'),
+            const Text('Resize all images in a folder.'),
+            const SizedBox(height: 12),
+            const Text('v${Constants.appVersion}'),
             const SizedBox(height: 48),
             const Text('Developed by:'),
             const SizedBox(height: 8),
